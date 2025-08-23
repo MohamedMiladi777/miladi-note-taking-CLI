@@ -1,6 +1,7 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { createNote } from "./notes.js";
+import { createNote, getAllNotes } from "./notes.js";
+import { listNotes } from "./utils.js";
 yargs(hideBin(process.argv))
   .command(
     "new <note>",
@@ -26,7 +27,10 @@ yargs(hideBin(process.argv))
     "all",
     "get all notes",
     () => {},
-    async (argv) => {}
+    async (argv) => {
+      const notes = await getAllNotes();
+      listNotes(notes);
+    }
   )
   .command(
     "find <filter>",
