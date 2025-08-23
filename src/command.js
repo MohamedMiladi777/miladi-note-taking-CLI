@@ -1,6 +1,6 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { createNote, findNote, getAllNotes } from "./notes.js";
+import { createNote, findNote, getAllNotes, removeNote } from "./notes.js";
 import { listNotes } from "./utils.js";
 yargs(hideBin(process.argv))
   .command(
@@ -56,7 +56,10 @@ yargs(hideBin(process.argv))
         description: "The id of the note you want to remove",
       });
     },
-    async (argv) => {}
+    async (argv) => {
+      const id = await removeNote(argv.id)
+      console.log(id)
+    }
   )
   .command(
     "web [port]",
