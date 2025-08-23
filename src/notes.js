@@ -48,9 +48,9 @@ export const getAllNotes = async () => {
  */
 export const findNote = async (note) => {
   const notes = await getAllNotes();
-  return notes.filter((item) => {
-    item.content.toLowerCase().includes(note.toLowerCase());
-  });
+   return notes.filter((item) =>
+    item.content.toLowerCase().includes(note.toLowerCase())
+  );
 };
 
 /**IV- Remove note
@@ -72,4 +72,4 @@ export const removeNote = async (id) => {
   return id;
 };
 
-export const removeAllNotes =  () => saveDB({notes: []})
+export const removeAllNotes = () => saveDB({ notes: [] });
