@@ -1,7 +1,8 @@
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
-import { createNote, findNote, getAllNotes, removeNote } from "./notes.js";
+import { createNote, findNote, getAllNotes, removeAllNotes, removeNote } from "./notes.js";
 import { listNotes } from "./utils.js";
+import { start } from "./server.js";
 yargs(hideBin(process.argv))
   .command(
     "new <note>",
@@ -71,13 +72,19 @@ yargs(hideBin(process.argv))
         type: "number",
       });
     },
-    async (argv) => {}
+    async (argv) => {
+      const notes = await getAllNotes()
+      start(notes,argv.port)
+    }
   )
   .command(
     "clean",
     "remove all notes",
     () => {},
-    async (argv) => {}
+    async (argv) => {
+      await removeAllNotes()
+      console.log("DB reseted")
+    }
   )
   .demandCommand(1)
   .parse();
