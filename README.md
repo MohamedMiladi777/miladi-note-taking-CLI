@@ -3,3 +3,4 @@
 - Command to write a new note : miladi new "your note" --tags "your tags" (Optional)
 - To find all notes type: miladi all
 - To filter a note type: miladi find "note-to-filter"
+- To start the server type: miladi web
