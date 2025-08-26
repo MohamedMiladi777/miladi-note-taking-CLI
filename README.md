@@ -4,3 +4,5 @@
 - To find all notes type: miladi all
 - To filter a note type: miladi find "note-to-filter"
 - To start the server type: miladi web
+
+AI was not involved in this work :)
